@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+ 
+<script>
+  let xhr=new XMLHttpRequest();
+  console.log("Intialized");
+xhr.open("GET","https://restcountries.com/v3.1/all");
+   xhr.onload=function(){
+      let responseData=JSON.parse(this.response);
+      parseData(responseData);
+   };
+   xhr.onerror=function()
+   {
+      console.log("error",this.statusText);
+   };
+   xhr.send();
+   function parseData(value)
+   {
+      console.log(value);
+      for(let key of value)
+      {
+         console.log("Country:",key.name.common , "Region:",key.region, "Sub Region:",key.subregion,"Population:",key.population);       }
+      
+   };
+</script>
+
+</body>
+</html>
